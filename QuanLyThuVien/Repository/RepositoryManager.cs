@@ -13,6 +13,8 @@ namespace Repository
         private RepositoryContext _repositoryContext;
         private INhanVienRepository _nhanvienRepository;
         private IDocGiaRepository _docgiaRepository;
+        private IAuthRepository _authRepository;
+
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
@@ -35,7 +37,17 @@ namespace Repository
                 return _docgiaRepository;
             }
         }
-        public void Save() => _repositoryContext.SaveChanges();
+        public IAuthRepository User
+        {
+            get
+            {
+                if (_authRepository == null)
+                    _authRepository = new AuthRepository(_repositoryContext);
+                return _authRepository;
+            }
+        }
+
+        public Task SaveAsync() => _repositoryContext.SaveChangesAsync();
 
     }
 }

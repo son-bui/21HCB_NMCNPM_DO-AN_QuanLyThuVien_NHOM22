@@ -10,6 +10,8 @@ namespace Contracts
     {
         IDocGiaRepository DocGia { get; }
         INhanVienRepository NhanVien { get; }
-        void Save();
+        IAuthRepository User { get; }
+        Task SaveAsync();
+
     }
 }

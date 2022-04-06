@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entities.DTO.DocGia;
+using Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,10 @@ namespace Contracts
 {
     public interface IDocGiaRepository
     {
+        Task<IEnumerable<DocGia>> GetAllDocGiaAsync(DocGiaParameters nhanvienParameters);
+        Task<DocGia> GetDocGiaByIdAsync(Guid id);
+        void CreateDocGia(DocGia docgia);
+        void UpdateDocGia(DocGia docgia);
+        void DeleteDocGia(DocGia docgia);
     }
 }

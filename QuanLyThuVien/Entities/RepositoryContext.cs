@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,7 @@ namespace Entities
         }
         public DbSet<NhanVien> NhanViens { get; set; }
         public DbSet<DocGia> DocGias { get; set; }
+        public DbSet<User> Users { get; set; }
+
     }
 }

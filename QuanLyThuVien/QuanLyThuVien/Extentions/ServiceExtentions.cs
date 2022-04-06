@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities;
+using LoggerService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -30,5 +31,7 @@ namespace QuanLyThuVien.Extentions
                         b.MigrationsAssembly("QuanLyThuVien")));
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+        public static void ConfigureLoggerService(this IServiceCollection services) =>
+            services.AddScoped<ILoggerManager, LoggerManager>();
     }
 }

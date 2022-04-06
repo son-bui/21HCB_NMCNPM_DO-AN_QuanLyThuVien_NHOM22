@@ -54,8 +54,6 @@ namespace QuanLyThuVien.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NhanVienId");
-
                     b.ToTable("DocGias");
                 });
 
@@ -94,20 +92,51 @@ namespace QuanLyThuVien.Migrations
                     b.ToTable("NhanViens");
                 });
 
-            modelBuilder.Entity("Entities.Models.DocGia", b =>
+            modelBuilder.Entity("Entities.Models.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("UserId");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<Guid>("NhanVienId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NhanVienId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Entities.Models.User", b =>
                 {
                     b.HasOne("Entities.Models.NhanVien", "NhanVien")
-                        .WithMany("DocGias")
+                        .WithMany()
                         .HasForeignKey("NhanVienId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("NhanVien");
-                });
-
-            modelBuilder.Entity("Entities.Models.NhanVien", b =>
-                {
-                    b.Navigation("DocGias");
                 });
 #pragma warning restore 612, 618
         }
