@@ -36,10 +36,20 @@ namespace Repository
         public async Task<IEnumerable<DocGia>> GetAllDocGiaAsync(DocGiaParameters nhanvienParameters)
         {
             List<DocGia> docgias;
-            docgias = await FindAll().OrderBy(e => e.HoTen)
+            if (nhanvienParameters.Search == null || nhanvienParameters.Search == "null")
+            {
+                docgias = await FindAll().OrderBy(e => e.HoTen)
                 .Skip((nhanvienParameters.PageNumber - 1) * nhanvienParameters.PageSize)
                 .Take(nhanvienParameters.PageSize)
                 .ToListAsync();
+            }
+            else
+            {
+                docgias = await FindByCondition(x => x.HoTen.Contains(nhanvienParameters.Search)).OrderBy(e => e.HoTen)
+                .Skip((nhanvienParameters.PageNumber - 1) * nhanvienParameters.PageSize)
+                .Take(nhanvienParameters.PageSize)
+                .ToListAsync();
+            }
             return docgias;
         }
 
