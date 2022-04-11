@@ -14,6 +14,7 @@ namespace Repository
         private INhanVienRepository _nhanvienRepository;
         private IDocGiaRepository _docgiaRepository;
         private IAuthRepository _authRepository;
+        private ISachRepository _sachRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -46,7 +47,15 @@ namespace Repository
                 return _authRepository;
             }
         }
-
+        public ISachRepository Sach
+        {
+            get
+            {
+                if (_sachRepository == null)
+                    _sachRepository = new SachRepository(_repositoryContext);
+                return _sachRepository;
+            }
+        }
         public Task SaveAsync() => _repositoryContext.SaveChangesAsync();
 
     }

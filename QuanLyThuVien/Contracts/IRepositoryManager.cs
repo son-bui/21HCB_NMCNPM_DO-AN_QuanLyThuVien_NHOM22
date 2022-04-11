@@ -11,6 +11,8 @@ namespace Contracts
         IDocGiaRepository DocGia { get; }
         INhanVienRepository NhanVien { get; }
         IAuthRepository User { get; }
+        ISachRepository Sach { get; }
+
         Task SaveAsync();
 
     }

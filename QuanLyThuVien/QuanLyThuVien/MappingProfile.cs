@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Entities.DTO.DocGia;
 using Entities.DTO.NhanVien;
+using Entities.DTO.Sach;
 using Entities.DTO.User;
 using Entities.Models;
 using System;
@@ -17,6 +18,7 @@ namespace QuanLyThuVien
             CreateMap<NhanVien, NhanVienDto>();
             CreateMap<DocGia, DocGiaDto>();
             CreateMap<NhanVienForCreationDto, NhanVien>();
+            CreateMap<SachForCreationDto, Sach>();
             CreateMap<NhanVienForUpdateDto, NhanVien>();
             CreateMap<DocGiaForCreationUpdateDto, DocGia>();
             CreateMap<UserForCreate, User>();
