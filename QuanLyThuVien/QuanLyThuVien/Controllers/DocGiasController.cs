@@ -68,7 +68,8 @@ namespace QuanLyThuVien.Controllers
             {
                 return BadRequest("DocGiaForCreationUpdateDto object is null");
             }
-            return Ok(await _docgiaService.UpdateDocGiaAsync(docgia));
+            _mapper.Map(docgia, dg);
+            return Ok(await _docgiaService.UpdateDocGiaAsync(dg));
 
         }
         [HttpDelete("DeleteDocGia/{id}")]

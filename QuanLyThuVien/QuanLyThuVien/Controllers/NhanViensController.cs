@@ -31,7 +31,8 @@ namespace QuanLyThuVien.Controllers
         public async Task<IActionResult> GetAllNhanVien([FromQuery] NhanVienParameters nhanvienParameters)
         {
             var nvs = await _nhanvienService.GetAllNhanVienAsync(nhanvienParameters);
-            return Ok(nvs);
+            var total = await _nhanvienService.GetCountNhanVien();
+            return Ok(new {total = total ,listNvs = nvs});
         }
         [HttpGet("GetById/{id}")]
         public async Task<IActionResult> GetNhanVienById(Guid id)
@@ -59,8 +60,8 @@ namespace QuanLyThuVien.Controllers
                 _logger.LogInfo($"Nhân viên với id: {id} không tồn tại .");
                 return NotFound();
             }
-            
-            return Ok(await _nhanvienService.UpdateNhanVienAsync(nhanvien));
+            _mapper.Map(nhanvien, nv);
+            return Ok(await _nhanvienService.UpdateNhanVienAsync(nv));
         }
         [HttpDelete("DeleteNhanVien/{id}")]
         public async Task<IActionResult> DeleteNhanVienById(Guid id)

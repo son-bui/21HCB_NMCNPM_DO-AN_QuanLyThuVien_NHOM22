@@ -36,12 +36,20 @@ namespace Repository
         public async Task<IEnumerable<NhanVien>> GetAllNhanVienAsync(NhanVienParameters nhanvienParameters)
         {
             List<NhanVien> nhanviens;
-
-            nhanviens = await FindAll().OrderBy(e => e.HoTen)
-            .Skip((nhanvienParameters.PageNumber - 1) * nhanvienParameters.PageSize)
-            .Take(nhanvienParameters.PageSize)
-            .ToListAsync();
-
+            if (nhanvienParameters.Search == null || nhanvienParameters.Search == "null")
+            {
+                nhanviens = await FindAll().OrderBy(e => e.HoTen)
+                .Skip((nhanvienParameters.PageNumber - 1) * nhanvienParameters.PageSize)
+                .Take(nhanvienParameters.PageSize)
+                .ToListAsync();
+            }
+            else
+            {
+                nhanviens = await FindByCondition(x => x.HoTen.Contains(nhanvienParameters.Search)).OrderBy(e => e.HoTen)
+                .Skip((nhanvienParameters.PageNumber - 1) * nhanvienParameters.PageSize)
+                .Take(nhanvienParameters.PageSize)
+                .ToListAsync();
+            }
             return nhanviens;
         }
 
@@ -51,6 +59,10 @@ namespace Repository
             return nv;
         }
 
-
+        public async Task<int> CountNhanVien()
+        {
+            var total = await CountAll();
+            return total;
+        }
     }
 }

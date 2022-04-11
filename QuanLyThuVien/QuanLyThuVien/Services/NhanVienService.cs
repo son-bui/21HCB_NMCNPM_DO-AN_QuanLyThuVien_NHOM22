@@ -48,13 +48,18 @@ namespace QuanLyThuVien.Services
             _repository.NhanVien.DeleteNhanVien(nhanvien);
         }
 
-        public async Task<NhanVien> UpdateNhanVienAsync(NhanVienForUpdateDto nhanvien)
+        public async Task<NhanVien> UpdateNhanVienAsync(NhanVien nhanvien)
         {
-            var nv = _mapper.Map<NhanVien>(nhanvien);
-            _repository.NhanVien.UpdateNhanVien(nv);
+            
+            _repository.NhanVien.UpdateNhanVien(nhanvien);
             await _repository.SaveAsync();
-            var result = await GetNhanVienByIdAsync(nv.Id);
+            var result = await GetNhanVienByIdAsync(nhanvien.Id);
             return result;
+        }
+
+        public async Task<int> GetCountNhanVien()
+        {
+            return await _repository.NhanVien.CountNhanVien();
         }
     }
 }

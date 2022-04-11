@@ -13,7 +13,7 @@ namespace Contracts
 
         Task<IEnumerable<NhanVien>> GetAllNhanVienAsync(NhanVienParameters nhanvienParameters);
         Task<NhanVien> GetNhanVienByIdAsync(Guid id);
-
+        Task<int> CountNhanVien();
         void CreateNhanVien(NhanVien nhanvien);
 
         void UpdateNhanVien(NhanVien nhanvien);

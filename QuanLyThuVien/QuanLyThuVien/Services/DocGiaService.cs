@@ -56,12 +56,11 @@ namespace QuanLyThuVien.Services
             _repository.DocGia.DeleteDocGia(dg);
         }
 
-        public async Task<DocGiaDto> UpdateDocGiaAsync(DocGiaForCreationUpdateDto docgia)
+        public async Task<DocGiaDto> UpdateDocGiaAsync(DocGia docgia)
         {
-            var dg = _mapper.Map<DocGia>(docgia);
-            _repository.DocGia.UpdateDocGia(dg);
+            _repository.DocGia.UpdateDocGia(docgia);
             await _repository.SaveAsync();
-            var result = await GetDocGiaByIdAsync(dg);
+            var result = await GetDocGiaByIdAsync(docgia);
             return result;
         }
     }
