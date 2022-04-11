@@ -33,4 +33,8 @@ namespace Entities.Models
     {
 
     }
+    public class SachParameters : RequestParameters
+    {
+
+    }
 }

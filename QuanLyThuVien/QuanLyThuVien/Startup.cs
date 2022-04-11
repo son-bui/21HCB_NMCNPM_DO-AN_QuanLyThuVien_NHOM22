@@ -84,6 +84,8 @@ namespace QuanLyThuVien
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<ISachService, SachService>();
+            services.AddScoped<ISachRepository, SachRepository>();
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
