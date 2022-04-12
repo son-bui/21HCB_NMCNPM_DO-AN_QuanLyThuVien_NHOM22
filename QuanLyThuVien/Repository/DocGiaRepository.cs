@@ -58,5 +58,10 @@ namespace Repository
             var dg = await FindByCondition(x => x.Id.Equals(id)).SingleOrDefaultAsync();
             return dg;
         }
+
+        public async Task<int> CountDocGia()
+        {
+            return await CountAll();
+        }
     }
 }

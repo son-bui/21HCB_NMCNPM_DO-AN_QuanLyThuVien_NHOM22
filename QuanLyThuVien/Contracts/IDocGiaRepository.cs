@@ -15,5 +15,7 @@ namespace Contracts
         void CreateDocGia(DocGia docgia);
         void UpdateDocGia(DocGia docgia);
         void DeleteDocGia(DocGia docgia);
+        Task<int> CountDocGia();
+
     }
 }

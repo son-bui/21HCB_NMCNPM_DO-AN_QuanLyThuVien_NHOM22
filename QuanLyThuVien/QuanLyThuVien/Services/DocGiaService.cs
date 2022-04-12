@@ -63,5 +63,10 @@ namespace QuanLyThuVien.Services
             var result = await GetDocGiaByIdAsync(docgia);
             return result;
         }
+
+        public async Task<int> GetCountDocGia()
+        {
+            return await _repository.DocGia.CountDocGia();
+        }
     }
 }
