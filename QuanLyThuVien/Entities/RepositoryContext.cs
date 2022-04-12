@@ -19,5 +19,8 @@ namespace Entities
         public DbSet<DocGia> DocGias { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Sach> Sachs { get; set; }
+        public DbSet<PhieuMuon> PhieuMuons { get; set; }
+        public DbSet<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Entities.DTO.DocGia;
 using Entities.DTO.NhanVien;
+using Entities.DTO.PhieuMuon;
 using Entities.DTO.Sach;
 using Entities.DTO.User;
 using Entities.Models;
@@ -21,6 +22,9 @@ namespace QuanLyThuVien
             CreateMap<SachForCreationDto, Sach>();
             CreateMap<NhanVienForUpdateDto, NhanVien>();
             CreateMap<DocGiaForCreationUpdateDto, DocGia>();
+            CreateMap<PhieuMuonForCreationDto, PhieuMuon>();
+            CreateMap<CTPhieuMuonForCreationDto, ChiTietPhieuMuon>();
+            CreateMap<SachMuonForCreationDto, ChiTietPhieuMuon>();
             CreateMap<UserForCreate, User>();
             CreateMap<User, UserForView>()
                 .ForMember(x => x.BoPhan, opt => opt.MapFrom(x => x.NhanVien.BoPhan))

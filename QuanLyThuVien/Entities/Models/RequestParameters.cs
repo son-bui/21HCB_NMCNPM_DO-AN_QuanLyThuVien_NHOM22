@@ -37,4 +37,12 @@ namespace Entities.Models
     {
 
     }
+    public class PhieuMuonParameters : RequestParameters
+    {
+
+    }
+    public class CTPhieuMuonParameters : RequestParameters
+    {
+
+    }
 }
