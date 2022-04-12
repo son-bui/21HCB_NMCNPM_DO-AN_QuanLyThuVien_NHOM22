@@ -31,8 +31,9 @@ namespace QuanLyThuVien.Controllers
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAllDocGia([FromQuery] DocGiaParameters docgiaParameters)
         {
-            var dgs = await _docgiaService.GetAllDocGiaAsync(docgiaParameters); ;
-            return Ok(dgs);
+            var dgs = await _docgiaService.GetAllDocGiaAsync(docgiaParameters);
+            var total = await _docgiaService.GetCountDocGia();
+            return Ok(new { total = total, listDgs = dgs });
         }
 
         [HttpGet("GetById/{id}")]

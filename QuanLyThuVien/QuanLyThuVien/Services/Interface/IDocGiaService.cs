@@ -16,6 +16,8 @@ namespace QuanLyThuVien.Services.Interface
         public void DeleteDocGiaAsync(DocGia dg);
         public Task<DocGiaDto> UpdateDocGiaAsync(DocGia dg);
 
+        public Task<int> GetCountDocGia();
+
 
     }
 }
