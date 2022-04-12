@@ -12,6 +12,8 @@ namespace Contracts
         INhanVienRepository NhanVien { get; }
         IAuthRepository User { get; }
         ISachRepository Sach { get; }
+        IPhieuMuonRepository PhieuMuon { get; }
+        ICTPhieuMuonRepository CTPhieuMuon { get; }
 
         Task SaveAsync();
 

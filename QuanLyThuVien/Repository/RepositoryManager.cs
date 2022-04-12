@@ -15,6 +15,9 @@ namespace Repository
         private IDocGiaRepository _docgiaRepository;
         private IAuthRepository _authRepository;
         private ISachRepository _sachRepository;
+        private IPhieuMuonRepository _phieumuonRepository;
+        private ICTPhieuMuonRepository _ctphieumuonRepository;
+
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -54,6 +57,25 @@ namespace Repository
                 if (_sachRepository == null)
                     _sachRepository = new SachRepository(_repositoryContext);
                 return _sachRepository;
+            }
+        }
+
+        public IPhieuMuonRepository PhieuMuon
+        {
+            get
+            {
+                if (_phieumuonRepository == null)
+                    _phieumuonRepository = new PhieuMuonRepository(_repositoryContext);
+                return _phieumuonRepository;
+            }
+        }
+        public ICTPhieuMuonRepository CTPhieuMuon
+        {
+            get
+            {
+                if (_ctphieumuonRepository == null)
+                    _ctphieumuonRepository = new CTPhieuMuonRepository(_repositoryContext);
+                return _ctphieumuonRepository;
             }
         }
         public Task SaveAsync() => _repositoryContext.SaveChangesAsync();

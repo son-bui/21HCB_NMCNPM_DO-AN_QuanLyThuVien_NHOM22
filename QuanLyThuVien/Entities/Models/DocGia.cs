@@ -23,5 +23,6 @@ namespace Entities.Models
         public float TongNo { get; set; }
         [ForeignKey(nameof(NhanVien))]
         public Guid NhanVienId { get; set; }
+        public NhanVien NhanVien { get; set; }
     }
 }

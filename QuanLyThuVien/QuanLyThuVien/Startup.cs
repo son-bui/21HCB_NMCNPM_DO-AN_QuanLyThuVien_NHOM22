@@ -86,6 +86,10 @@ namespace QuanLyThuVien
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ISachService, SachService>();
             services.AddScoped<ISachRepository, SachRepository>();
+            services.AddScoped<IPhieuMuonRepository, PhieuMuonRepository>();
+            services.AddScoped<IPhieuMuonService, PhieuMuonService>();
+            services.AddScoped<ICTPhieuMuonRepository, CTPhieuMuonRepository>();
+            services.AddScoped<ICTPhieuMuonService, CTPhieuMuonService>();
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
