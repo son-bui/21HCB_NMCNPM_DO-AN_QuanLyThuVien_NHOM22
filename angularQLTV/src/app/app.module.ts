@@ -33,6 +33,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 registerLocaleData(en);
 
 @NgModule({
@@ -67,6 +68,7 @@ registerLocaleData(en);
     NzModalModule,
     NzPaginationModule,
     NzSpinModule,
+    NzInputNumberModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'nhanviens', component: NhanvienComponent, pathMatch: 'full' },
