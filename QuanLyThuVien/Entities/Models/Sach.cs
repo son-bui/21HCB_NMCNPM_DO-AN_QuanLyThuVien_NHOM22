@@ -24,5 +24,7 @@ namespace Entities.Models
         public DateTime NgayTiepNhan { get; set; }
         [ForeignKey(nameof(NhanVien))]
         public Guid NhanVienId { get; set; }
+        public NhanVien NhanVien { get; set; }
+
     }
 }
