@@ -35,12 +35,19 @@ namespace QuanLyThuVien.Services
 
         public async Task<IEnumerable<Sach>> GetAllSachAsync(SachParameters SachParameters)
         {
-            return await _repository.Sach.GetAllSachAsync(SachParameters);
+            var sachs = await _repository.Sach.GetAllSachAsync(SachParameters);
+            foreach (var s in sachs)
+            {
+                s.NhanVien = await _repository.NhanVien.GetNhanVienByIdAsync(s.NhanVienId);
+            }
+            return sachs;
         }
 
         public async Task<Sach> GetSachByIdAsync(Guid id)
         {
-            return await _repository.Sach.GetSachByIdAsync(id);
+            var sach = await _repository.Sach.GetSachByIdAsync(id);
+            sach.NhanVien = await _repository.NhanVien.GetNhanVienByIdAsync(sach.NhanVienId);
+            return sach;
         }
 
         public void DeleteSachAsync(Sach Sach)
