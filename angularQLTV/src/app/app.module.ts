@@ -1,3 +1,4 @@
+import { SachComponent } from './sach/sach.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -72,7 +73,8 @@ registerLocaleData(en);
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'nhanviens', component: NhanvienComponent, pathMatch: 'full' },
-      { path: 'docgias', component: DocgiaComponent, pathMatch: 'full' }
+      { path: 'docgias', component: DocgiaComponent, pathMatch: 'full' },
+      { path: 'sachs', component: SachComponent, pathMatch: 'full' }
     ], {
       onSameUrlNavigation: 'reload'
     })
